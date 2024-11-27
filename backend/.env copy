@@ -1,0 +1,8 @@
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=voting_system
+PORT=3000 
+ADMIN_TOKEN=
+BOT_TOKEN=
+WEBAPP_URL=
