@@ -1,0 +1,239 @@
+:root {
+  --primary-color: #2481cc;
+  --primary-hover: #1a6dad;
+  --background-color: #0a0a0a;
+  --card-background: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border-color: #2a2a2a;
+  --success-color: #00E676;
+  --success-glow: rgba(0, 230, 118, 0.3);
+  
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  --gradient-primary: linear-gradient(135deg, #2481cc, #1a6dad);
+  --gradient-hover: linear-gradient(135deg, #1a6dad, #145c94);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+}
+
+.feed-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+  width: 100%;
+}
+
+.candidates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.candidate-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: var(--card-background);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--index) * 0.1s);
+  opacity: 0;
+}
+
+.candidate-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  border-color: var(--primary-color);
+}
+
+.candidate-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+
+.vote-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--button-shadow);
+}
+
+.vote-button:hover:not(:disabled) {
+  transform: scale(1.1);
+  background: var(--gradient-hover);
+}
+
+.vote-button:disabled {
+  background: #2a2a2a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.vote-button svg {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.alert {
+  position: relative;
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  text-align: center;
+  background: rgba(0, 230, 118, 0.1);
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px var(--success-glow);
+}
+
+.footer {
+  background: var(--card-background);
+  padding: 24px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 16px;
+  }
+  
+  .candidate-item {
+    padding: 16px;
+  }
+  
+  .candidate-name {
+    font-size: 16px;
+  }
+  
+  .vote-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .vote-button svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.status-message {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-message h2 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.status-message p {
+  color: var(--text-secondary);
+}
+
+.status-message.pending {
+  border-color: var(--primary-color);
+}
+
+.status-message.finished {
+  border-color: var(--success-color);
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-primary);
+}
+
+.loading-animation {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+} 
